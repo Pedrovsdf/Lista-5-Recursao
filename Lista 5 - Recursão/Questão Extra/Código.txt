@@ -1,0 +1,72 @@
+import math
+
+
+def busca_binaria(lista, esquerda, direita, valor, txt):
+    if direita < esquerda:
+        return txt, -1
+    meio = math.ceil((esquerda + direita) / 2)
+    if int(lista[meio]) != valor and meio == direita and meio == esquerda:
+        txt += 'Meio'
+        return txt, -1
+    if int(lista[meio]) == valor:
+        txt += 'Meio'
+        return txt, meio
+    elif int(lista[meio]) > valor:
+        txt += 'Esquerda -> '
+        return busca_binaria(lista, esquerda, meio - 1, valor, txt)
+    else:
+        txt += 'Direita -> '
+        return busca_binaria(lista, meio + 1, direita, valor, txt)
+
+
+def encontrar_binario(decimal):
+    if decimal == 0:
+        return 0
+    else:
+        return (decimal % 2 + 10 * encontrar_binario(int(decimal // 2)))
+
+
+lista = (input()).split()
+valor = int(input())
+casas_dec = int(input())
+txt = ''
+if int(lista[0]) > valor or int(lista[-1]) < valor:
+    n = -1
+    txt = 'null'
+else:
+    txt, n = busca_binaria(lista, 0, len(lista) - 1, valor, txt)
+
+if n == -1:
+    if txt != 'null':
+        binario = encontrar_binario(valor)
+        lista_binario = [int(x) for x in str(binario)]
+        if len(lista_binario) > casas_dec:
+            print('Busquei muito, mas não achei a sala, que nem posso dizer, já que tenho poucos bits.')
+        else:
+            txt = txt.rstrip()
+            print(f'{txt}, mas não consegui achar.')
+    else:
+        
+        if valor < int(lista[0]) or valor > int(lista[len(lista) - 1]):
+            print('Acho que a Doutora se confundiu, pois é impossível chegar nesse'
+                  ' número pois ele é menor que a menor sala ou maior que o maior da sala.')
+        else:
+            binario = encontrar_binario(valor)
+            lista_binario = [int(x) for x in str(binario)]
+            txt = txt.rstrip()
+            print(f'{txt}, mas não consegui achar.')
+else:
+    binario = encontrar_binario(valor)
+    lista_binario = [int(x) for x in str(binario)]
+
+    if len(lista_binario) < casas_dec:
+        sub = casas_dec - len(lista_binario)
+        for i in range(sub):
+            lista_binario.insert(0, 0)
+        binario = ''.join(str(x) for x in lista_binario)
+        print(f'{txt}, seguindo por essas coordenadas você vai chegar no número {binario}.')
+    elif len(lista_binario) > casas_dec:
+        print('Consegui encontar a saída, mas não consigo falar pois'
+              ' o número é muito grande para essa quantidade de bits.')
+    else:
+        print(f'{txt}, seguindo por essas coordenadas você vai chegar no número {binario}.')

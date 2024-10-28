@@ -1,0 +1,21 @@
+def somadig(n):
+    if n == 0:
+        return 0
+    else:
+        return (n % 10) + somadig(n // 10)
+
+
+def mdc(a, b):
+    return a if not b else mdc(b, a % b)
+
+n1 = int(input())
+n2 = int(input())
+n3 = int(input())
+soma1 = somadig(n1)
+soma2 = somadig(n2)
+soma3 = somadig(n3)
+
+m1 = mdc(soma1, soma2)
+m2 = mdc(m1, soma3)
+
+print(f'O MDC obtido é: {m2}')

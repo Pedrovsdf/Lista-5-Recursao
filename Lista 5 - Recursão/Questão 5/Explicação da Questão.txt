@@ -1,0 +1,74 @@
+O livro ‘Recursão’, escrito por Blake Crouch, é uma obra de ficção científica onde a viagem no tempo é explorada de uma forma diferente. Basicamente, as linhas temporais possuem a memória coletiva e individual como matéria prima. Sendo assim, breakpoints na memória poderiam ser uma espécie de ‘pontos de backup’, onde seria possível acessar esses pontos e reviver as coisas a partir deles. A personagem principal, Hellena Smith, é uma neurocientista que, em busca de amenizar os danos causados pelo Alzheimer, acabou criando uma máquina capaz de enviar pessoas para suas memórias e dar a elas a chance de “refazer” a vida a partir de um determinado ponto.Isso é uma imagem
+
+Contudo, há um grande problema quando mexemos com o passado, pois as linhas temporais acabam se intersectando em algum momento e isso pode causar SFM - Síndrome de Falsa Memória - nas pessoas ou até mesmo levar uma sociedade inteira a uma grande crise existencial.
+
+Em resumo, você deve criar uma algoritmo recursivo capaz de analisar os dados de uma possível viagem ao passado e retornar os dados relacionados a essa operação para que a máquina construída por Hellena realize apenas viagens seguras.
+
+OBS0: É obrigatório o uso de recursão.
+
+Input
+
+O programa receberá 5 entradas. São eles:
+
+Quantidade de acontecimentos → Quantos acontecimentos importantes ocorreram naquele intervalo de tempo
+
+Lista de nível → Uma lista contendo o nível de relevância de cada acontecimento
+
+Lista de datas → Uma lista contendo as datas de cada respectivo acontecimento
+
+Lista de acontecimentos → Uma lista contendo todos os acontecimentos
+
+Data atual → A data em que a máquina está sendo utilizada
+
+Os níveis de relevância são classificados da seguinte forma, sendo R o valor inteiro dado como entrada:
+
+Nível baixo de relevância: R <= 4
+
+Nível médio de relevância: 4 < R <= 6
+
+Nível alto de relevância: R > 6
+
+Atenção: Caso o intervalo de tempo entre o acontecimento e a data atual seja maior ou igual a 4 anos e 6 meses, o nível de relevância deve ser considerado alto independente do valor de R.
+
+OBS2: A data é dada apenas por mês e ano. Portanto, você não deve considerar a quantidade de dias.
+
+OBS3: O cálculo de insegurança é dado pela seguinte fórmula: (Média/(Baixa + Média))*100 onde 'Média' é a quantidade de eventos de relevância média e "Baixa" é a quantidade de eventos de relevância baixa.
+
+OBS4: Apenas viagens para o passado são realizadas pela máquina.
+
+Output
+
+Se não houver acontecimento de alta relevância e a porcentagem de insegurança for maior que 20.
+
+Os cálculos mostram que é possível acessar essa linha do tempo sem que haja muitos danos.
+
+Mas é necessário termos cuidado, a taxa de insegurança é de β%
+
+Se não houver acontecimento de alta relevância e a porcentagem de insegurança for menor ou igual a 20
+
+Os cálculos mostram que é possível acessar essa linha do tempo sem que haja muitos danos.
+
+A chance de sucesso é muito alta. Mudaremos o mundo mais uma vez, dr. Helena Smith.
+
+Se algum dos eventos tem relevância alta:
+
+Realizar essa operação é um grande erro. A humanidade pode entrar em colapso.
+
+Há X acontecimento(s) relevante(s). Se as consequências das suas ações anularem algum desses eventos, teremos sérios problemas.
+
+OBS6: Um acontecimento é relevante se ele tiver um nível alto de relevância, como explicado na especificações de Input
+
+Por fim, seu código deve imprimir os dados de cada acontecimento no seguinte formato
+Aqui estão os dados dos acontecimentos:
+
+acontecimento1 | gap: K1 anos e L1 meses | nível de relevância: M1
+
+acontecimento2 | gap: K2 anos e L2 meses | nível de relevância: M2
+
+acontecimento3 | gap: K3 anos e L3 meses | nível de relevância: M3
+
+…
+
+acontecimentoX | gap: KX anos e LX meses | nível de relevância: MX
+
+Sendo o gap a diferença de tempo entre a data do acontecimento e a data atual.

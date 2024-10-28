@@ -1,0 +1,80 @@
+def inseg(lvl):
+    global baixo, medio, alto
+    if len(lvl) == 0:
+        if medio == 0:
+            lvl_inseg = 0
+        else:
+            lvl_inseg = (medio/(baixo + medio))*100
+        return lvl_inseg
+    if lvl[0] == 'Baixo':
+        baixo += 1
+        lvl.pop(0)
+        return inseg(lvl)
+    elif lvl[0] == 'Medio':
+        medio += 1
+        lvl.pop(0)
+        return inseg(lvl)
+    else:
+        alto += 1
+        lvl.pop(0)
+        return inseg(lvl)
+
+qtd = input()
+relevancia = (input()).split(', ')
+datas = (input()).split(', ')
+acontecimentos = (input()).split(', ')
+data_atual = (input()).split('.')
+lvl_relevancia = []
+dif = []
+for i in range(len(datas)):
+    datas[i] = datas[i].split('.')
+
+for i in range(len(relevancia)):
+    mes = 0
+    ano = 0
+  
+    if int(datas[i][0]) > int(data_atual[0]):
+        ano = abs(int(datas[i][1]) - int(data_atual[1])) - 1
+        mes = 12 - (abs(int(datas[i][0]) - int(data_atual[0])))
+    else:
+        mes = abs(int(datas[i][0]) - int(data_atual[0]))
+        ano = abs(int(datas[i][1]) - int(data_atual[1]))
+    
+    dif.append(mes)
+    dif.append(ano)
+    
+    if (mes >= 6 and ano == 4) or ano > 4:
+        lvl_relevancia.append('Alto')
+    else:
+        if int(relevancia[i]) <= 4:
+            lvl_relevancia.append('Baixo')
+        elif int(relevancia[i]) <= 6:
+            lvl_relevancia.append('Medio')
+        else:
+            lvl_relevancia.append('Alto')
+
+
+baixo = 0
+medio = 0
+alto = 0
+lvl_inseguranca = inseg(lvl_relevancia)
+j = 1
+k = 0
+
+if alto == 0:
+    if lvl_inseguranca > 20:
+        print('Os cálculos mostram que é possível acessar essa linha do tempo sem que haja muitos danos.')
+        print(f'Mas é necessário termos cuidado, a taxa de insegurança é de {int(lvl_inseguranca)}%')
+    else:
+        print('Os cálculos mostram que é possível acessar essa linha do tempo sem que haja muitos danos.')
+        print('A chance de sucesso é muito alta. Mudaremos o mundo mais uma vez, dr. Helena Smith.')
+else:
+    print('Realizar essa operação é um grande erro. A humanidade pode entrar em colapso.')
+    print(f'Há {alto} acontecimento(s) relevante(s). Se as consequências das suas ações '
+          f'anularem algum desses eventos, teremos sérios problemas.')
+
+print('\nAqui estão os dados dos acontecimentos:')
+for i in range(len(acontecimentos)):
+    print(f'{acontecimentos[i]} | gap: {dif[j]} anos e {dif[k]} meses | nível de relevância: {relevancia[i]}')
+    j += 2
+    k += 2

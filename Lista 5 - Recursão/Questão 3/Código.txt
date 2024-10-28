@@ -1,0 +1,46 @@
+def separar_listas(lista, upper, lower):
+    if len(lista) == 0:
+        return upper, lower
+    if lista[0].islower():
+        lower.append(lista[0])
+        lista.pop(0)
+        return separar_listas(lista, upper, lower)
+    else:
+        upper.append(lista[0])
+        lista.pop(0)
+        return separar_listas(lista, upper, lower)
+
+def fatorial(n):
+    if n == 0 or n == 1:
+        return 1
+    else:
+        return n * fatorial(n - 1)
+
+lista = list(input())
+lista_upper = []
+lista_lower = []
+n = len(lista)
+
+lista_upper, lista_lower = separar_listas(lista, lista_upper, lista_lower)
+
+if len(lista_upper) > len(lista_lower):
+    k = len(lista_upper)
+else:
+    k = len(lista_lower)
+
+p1 = fatorial(n)
+p2 = fatorial(k)
+p3 = fatorial(n - k)
+NUM = int(p1/(p2 * p3))
+
+r = NUM % k
+
+if len(lista_upper) >= len(lista_lower):
+    nome = str(lista_upper[r]) + '-' + str(NUM)
+    print(f'Morty!!! Morty!!! Vamos para a dimensão {nome},'
+          f' Morty!!! Vai ser legal, Morty!!! Rick e Morty na dimensão '
+          f'{nome} para sempre, Morty!!! Wubba lubba dub dub!!!')
+else:
+    nome = str(lista_lower[r]) + '-' + str(NUM)
+    print(f'Oh geez, Rick!!! Eu não sei se ir pra dimensão {nome}'
+          f' é uma boa ideia... Eu estou com medo, Rick!!! Oh geez!!!')

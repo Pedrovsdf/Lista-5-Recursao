@@ -1,0 +1,62 @@
+Rick e Morty depois de mais uma de suas aventuras caóticas pelo multiverso, infelizmente estragaram a dimensão em que estavam vivendo após acidentalmente transformarem tudo em picles. Oh geez, Rick!!!
+
+Após esse incidente, Rick e seu neto precisam encontrar outra dimensão para viver. Algo que não é muito difícil para a pessoa mais inteligente do universo!!! Para isso, Rick precisa construir uma máquina capaz de rastrear uma dimensão a qual seja adequada para os dois viverem.
+
+Apesar de poder fazer isso sozinho, Rick, por achar esse trabalho tão ridículo, desenvolveu um robô, que no caso será você, jovem estudante do CIn, para fazer esse e outros trabalhos que deixam o velho cientista entediado.
+
+É importante salientar que as dimensões são representas das seguinte forma:
+
+CHAR-NUM
+
+Onde CHAR é uma letra do alfabeto qualquer, maiúscula ou minúscula, e NUM um número inteiro positivo qualquer.
+
+Esse dispositivo funcionará da seguinte forma:
+
+Ele receberá uma string aleatória composta apenas por LETRAS DO ALFABETO, podendo elas serem maiúsculas ou minúsculas.
+
+OBS: Os caracteres NÃO PODERÃO SE REPETIR dentro da string, ou seja, uma letra nunca aparecerá mais de uma vez na mesma string. Contudo, considere os caracteres maiúsculos DIFERENTES dos caracteres minúsculos. Isso porque podemos ter numa mesma entrada um caractere aparecendo tanto em sua forma maiúscula quanto em sua forma minúscula.
+
+EXEMPLOS DE ENTRADAS VÁLIDAS:
+
+ASDjdskea
+
+KJk
+
+SDkOs
+
+OBS 2: A questão trabalhará apenas com entradas válidas/amigáveis, portanto não se preocupe com possíveis entradas inválidas.
+
+Após o recebimento da entrada, utilizando seus conhecimentos de RECURSÃO, descobriremos o número NUM da dimensão encontrando quantas combinações de k caracteres dos n caracteres da entrada existem, sendo k a maior quantidade do tipo de caractere (maiúsculo ou minúsculo) presente na string. Caso haja quantidades iguais de letras maiúsculas e minúsculas, trabalharemos com as maiúsculas.
+
+EXEMPLO:
+
+Seja a entrada:
+
+hgkowlALF
+
+Temos, aqui, mais letras minúsculas do que maiúsculas. Como há seis letras minúsculas, temos que k = 6.
+Fórmula de combinação simples para encontrar NUM:
+
+Untitled
+
+DICA: Você pode utilizar os métodos isupper() e islower() do Python para a resolução da questão.
+
+Para encontrar a letra CHAR do nome da dimensão, precisaremos da (R+1)-ésima letra minúscula presente na entrada caso hajam mais letras minúsculas na string ou da (R+1)-ésima letra maiúscula da entrada caso contrário. R se dará pela seguinte fórmula:
+
+R = NUM % k
+
+Input
+
+O programa receberá uma string S com o formato especificado no enunciado da questão.
+
+S
+
+Output
+
+Caso CHAR, a letra presente no nome da dimensão, seja maiúscula, o programa deverá imprimir a seguinte mensagem:
+
+Morty!!! Morty!!! Vamos para a dimensão {NOME DA DIMENSÃO}, Morty!!! Vai ser legal, Morty!!! Rick e Morty na dimensão {NOME DA DIMENSÃO} para sempre, Morty!!! Wubba lubba dub dub!!!
+
+Caso contrário:
+
+Oh geez, Rick!!! Eu não sei se ir pra dimensão {NOME DA DIMENSÃO} é uma boa ideia... Eu estou com medo, Rick!!! Oh geez!!!

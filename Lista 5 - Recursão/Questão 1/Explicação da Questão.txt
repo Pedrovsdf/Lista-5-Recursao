@@ -1,0 +1,27 @@
+Após uma guerra religiosa que praticamente destruiu a Terra, um casal de androides, chamados de Mãe e Pai, são enviados ao planeta Kepler 22B pela facção dos Ateus, levando embriões humanos a fim de preservar nossa espécie. Durante o crescimento dos embriões, os androides são encarregados de ensinar as crianças humanas todos os tipos de habilidades. Em um dia, os androides estavam dando aulas de programação para as crianças, mais especificamente de recursão. A Mãe passou uma tarefa para ver se as crianças estavam conseguindo aprender o conceito de recursão, a tarefa consiste em receber 3 números inteiros e em seguida calcular a soma dos dígitos de cada um dos números
+
+exemplo : 312 → somadigitos = 3 + 1 + 2 = 6
+
+Após fazer a soma dos dígitos de cada um, eles devem calcular o máximo divisor comum entre a soma dos dígitos de cada um dos 3 números, ajude as crianças a implementar um programa que realiza isso
+
+OBS : (OBRIGATÓRIO o uso de recursão para calcular a soma dos dígitos E para calcular o MDC)Mãe
+
+Input
+
+A entrada consiste de 3 números inteiros e positivos
+
+[num1]
+
+[num2]
+
+[num3]
+
+Output
+
+OUTPUT
+
+A saída consiste da frase
+
+O MDC obtido é: X
+
+Onde X é o MDC calculado

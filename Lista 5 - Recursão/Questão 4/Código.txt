@@ -1,0 +1,87 @@
+def posicoes(lista):
+    lista_pos = []
+    for i in lista:
+        pos = int((ord(i) - 97) % 11)
+        lista_pos.append(pos)
+    return lista_pos
+
+
+def fibonacci(n):
+    if n <= 0:
+        return [0]
+    sequencia = [0, 1]
+    while len(sequencia) <= n:
+        proximo = sequencia[len(sequencia) - 1] + sequencia[len(sequencia) - 2]
+        sequencia.append(proximo)
+    return sequencia
+
+
+def fatorial(x):
+    resultado = 1
+    for i in range(x):
+        resultado = resultado * (x - i)
+    return resultado
+
+
+def fat(a, b):
+    lista = []
+    for i in range(a, b + 1):
+        lista.append(fatorial(i))
+    return lista
+
+
+def frase_num(pos, fib, f):
+    lista_nova = []
+    for i in range(len(pos)):
+        if pos[i] == 0:
+            lista_nova.append('1')
+        else:
+            if pos[i] % 2 != 0:
+                for j in range(len(fib[i])):
+                    lista_nova.append(int(fib[i][j]) * int(f[i][j]))
+            else:
+                for j in range(len(fib[i])):
+                    lista_nova.append(int(fib[i][j]) + int(f[i][j]))
+    return lista_nova
+
+def frase_descobrir(lista, alfabeto):
+    lista_completa = []
+    for i in lista:
+        if isinstance(i, str):
+            lista_completa.append(i)
+        else:
+            palavra_num = int(i) % 26
+            palavra = alfabeto[palavra_num]
+            lista_completa.append(palavra)
+    return lista_completa
+
+alfabeto = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k',
+            'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v',
+            'w', 'x', 'y', 'z']
+senha_errada = input()
+qtd_palavras = int(input())
+achou = 0
+
+for i in range(qtd_palavras):
+    lista = list(input())
+    lista_pos = posicoes(lista)
+    lista_fib = []
+    lista_fat = []
+    for i in range(len(lista_pos)):
+        lista_fib.append(fibonacci(lista_pos[i] - 1))
+
+    for i in lista_pos:
+        lista_fat.append(fat(0, i - 1))
+
+    lista_palavra_num = frase_num(lista_pos, lista_fib, lista_fat)
+
+    lista_palavra = frase_descobrir(lista_palavra_num, alfabeto)
+    frase = ''.join(lista_palavra)
+    if frase == senha_errada:
+        achou = 1
+        break
+
+if achou == 1:
+    print('Achamos! Achamos a senha.')
+else:
+    print('É... Temos que procurar mais.')

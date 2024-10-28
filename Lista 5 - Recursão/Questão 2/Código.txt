@@ -1,0 +1,32 @@
+def contar(lista, cont_direita, cont_esquerda):
+    if len(lista) == 0:
+        return cont_direita, cont_esquerda
+    else:
+        if lista[0] == '(':
+            cont_esquerda += 1
+            lista.pop(0)
+            return contar(lista, cont_direita, cont_esquerda)
+        elif lista[0] == ')':
+            cont_direita += 1
+            lista.pop(0)
+            return contar(lista, cont_direita, cont_esquerda)
+        else:
+            lista.pop(0)
+            return contar(lista, cont_direita, cont_esquerda)
+
+
+n = int(input())
+for i in range(n):
+    cont_direita = 0
+    cont_esquerda = 0
+
+    lista = list(input())
+    
+    ce, cd = contar(lista, cont_direita, cont_esquerda)
+
+    if cd == ce:
+      print("Essa sentença está com os parênteses balanceados, HOORAY!")
+    elif cd > ce:
+      print("A quantidade de parênteses '(' está maior que a de ')', vamos descartá-la")
+    elif ce > cd:
+      print("A quantidade de parênteses ')' está maior que a de '(', vamos descartá-la")
