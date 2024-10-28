@@ -1,2 +1,1 @@
-# Lista-5-Recursao
-Questões de Recursão
+As questões vão escalonando, então as com numerações mais altas são mais difíceis.
